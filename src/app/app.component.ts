@@ -8,11 +8,20 @@ import {AdService} from './ad.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  ads: AdItem[];
+  singleAd: AdItem;
+  name = 'domenico';
 
   constructor(private adService: AdService) {}
 
   ngOnInit(): void {
-    this.ads = this.adService.getAds();
+    this.loadSingleAd(this.name);
+  }
+
+  onClick(value: string) {
+    this.loadSingleAd(value);
+  }
+
+  loadSingleAd(name) {
+    this.singleAd = this.adService.loadComponent(name);
   }
 }

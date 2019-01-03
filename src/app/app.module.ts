@@ -7,6 +7,7 @@ import {HeroJobAdComponent} from './hero-job-ad.component';
 import {HeroProfileComponent} from './hero-profile.component';
 import {AdBannerComponent} from './ad-banner.component';
 import {AdService} from './ad.service';
+import {DataService} from './data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AdService} from './ad.service';
     BrowserModule
   ],
   providers: [
-    AdService
+    AdService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

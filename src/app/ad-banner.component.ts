@@ -11,7 +11,7 @@ import {AdComponent} from './ad.component';
   </div>`
 })
 export class AdBannerComponent implements OnInit, OnDestroy {
-  @Input() ads: AdItem[];
+  @Input() ads: AdItem;
   @ViewChild(AdDirective) adHost: AdDirective;
   currentAdIndex = -1;
   interval: any;
@@ -28,8 +28,7 @@ export class AdBannerComponent implements OnInit, OnDestroy {
   }
 
   loadComponent() {
-    this.currentAdIndex = (this.currentAdIndex + 1) % this.ads.length;
-    const adItem = this.ads[this.currentAdIndex];
+    const adItem = this.ads;
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
 
@@ -43,6 +42,6 @@ export class AdBannerComponent implements OnInit, OnDestroy {
   getAds() {
     this.interval = setInterval(() => {
       this.loadComponent();
-    }, 3000);
+    }, 100);
   }
 }
